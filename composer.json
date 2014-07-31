@@ -1,0 +1,20 @@
+{
+    "name": "niclasleonbock/eloquent-activatable",
+    "description": "Creating (de-) activatable Eloquent Models made easy.",
+    "keywords": [ "laravel", "eloquent", "activatable", "activate" ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "niclasleonbock\\Eloquent\\": "src/" }
+    },
+    "require": {
+		"php": ">=5.4.0",
+		"illuminate/config": "4.*",
+		"illuminate/database": "4.*",
+		"illuminate/support": "4.*"
+	},
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "orchestra/testbench": "2.2.*",
+        "nesbot/Carbon": "*"
+    }
+}
