@@ -36,9 +36,9 @@ class ActivatableTestCase extends TestCase
 
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', array(
-                'driver'   => 'sqlite',
-                'database' => ':memory:',
-                'prefix'   => '',
+            'driver'    => 'sqlite',
+            'database'  => ':memory:',
+            'prefix'    => '',
         ));
     }
 
