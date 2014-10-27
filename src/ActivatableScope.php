@@ -73,19 +73,17 @@ class ActivatableScope implements ScopeInterface
                 $query->wheres = array_values($query->wheres);
             }
         }
-
     }
 
-	/**
-	 * Determine if the given where clause is an activated constraint.
-	 *
-	 * @param  array   $where
-	 * @param  string  $column
-	 * @return bool
-	 */
-	protected function isActivatedConstraint(array $where, $column)
-	{
-		return $where['type'] == 'NotNull' && $where['column'] == $column;
-	}
+    /**
+     * Determine if the given where clause is an activated constraint.
+     *
+     * @param  array   $where
+     * @param  string  $column
+     * @return bool
+     */
+    protected function isActivatedConstraint(array $where, $column)
+    {
+        return $where['type'] == 'NotNull' && $where['column'] == $column;
+    }
 }
-
