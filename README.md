@@ -16,7 +16,7 @@ First, you'll need to add the package to your `composer.json` and run `composer 
 
 > Because Eloquent Activatable uses traits and global query scopes you will need to run PHP 5.4.0 and Laravel 4.2.0 or higher.
 
-Now, simply add a datetime column called `activated_at` to your table and use the `ActivatableTrait` (`niclasleonbock\Eloquent\ActivatableTrait`) to your Eloquent model.
+Now, simply add a datetime column called `activated_at` to your table and use the `ActivatableTrait` (`niclasleonbock\Eloquent\ActivatableTrait`) in your Eloquent model.
 
 ### Migration
 ```php
