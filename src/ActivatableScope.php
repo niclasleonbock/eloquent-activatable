@@ -1,10 +1,11 @@
 <?php
 namespace niclasleonbock\Eloquent;
 
-use Illuminate\Database\Eloquent\ScopeInterface;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
 
-class ActivatableScope implements ScopeInterface
+class ActivatableScope implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.
@@ -12,10 +13,8 @@ class ActivatableScope implements ScopeInterface
      * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
-    public function apply(Builder $builder)
+    public function apply(Builder $builder, Model $model)
     {
-        $model = $builder->getModel();
-
         $builder->whereNotNull($model->getQualifiedActivatedAtColumn());
 
         $builder->macro('withDeactivated', function (Builder $builder) {

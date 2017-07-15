@@ -11,14 +11,12 @@ class ActivatableTestCase extends TestCase
     {
         parent::setUp();
 
-        $artisan = $this->app->make('artisan');
-
-        $artisan->call('migrate', [
-            '--database'    => 'testing',
-            '--path'        => '../tests/database/migrations',
+        $this->loadMigrationsFrom([
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__.'/database/migrations'),
         ]);
 
-        $artisan->call('db:seed', [
+        $this->artisan('db:seed', [
             '--database'    => 'testing',
             '--class'       => 'TopicTableSeeder',
         ]);
@@ -32,14 +30,21 @@ class ActivatableTestCase extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
+        parent::getEnvironmentSetUp($app);
+
         $app['path.base'] = __DIR__ . '/../src';
 
         $app['config']->set('database.default', 'testing');
-        $app['config']->set('database.connections.testing', array(
+        $app['config']->set('database.connections.testing', [
             'driver'    => 'sqlite',
             'database'  => ':memory:',
             'prefix'    => '',
-        ));
+        ]);
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return ['Orchestra\Database\ConsoleServiceProvider'];
     }
 
     protected function getModel()
@@ -63,7 +68,6 @@ class ActivatableTestCase extends TestCase
         return $topic;
     }
 
-
     /**
      * Test only activated (default) functionality.
      *
@@ -77,11 +81,11 @@ class ActivatableTestCase extends TestCase
     }
 
     /**
-     * Test only activated (default) functionality.
+     * Test loading with deactivated included functionality.
      *
      * @test
      */
-    public function testWithDectivated()
+    public function testWithDeactivated()
     {
         $count = $this->getModel()->withDeactivated()->count();
 
@@ -99,7 +103,7 @@ class ActivatableTestCase extends TestCase
 
         $topic->activate();
 
-        $this->assertEquals(Carbon::now(), $topic->activated_at);
+        $this->assertEquals(Carbon::now()->toDateTimeString(), $topic->activated_at->toDateTimeString());
     }
 
     /**
