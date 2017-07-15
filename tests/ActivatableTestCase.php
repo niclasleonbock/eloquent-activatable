@@ -10,26 +10,16 @@ class ActivatableTestCase extends TestCase
     public function setUp()
     {
         parent::setUp();
-        /*$this->artisan('migrate', [
-            '--database'    => 'testing',
-            '--path'        => '../tests/database/migrations',
-        ]);*/
 
         $this->loadMigrationsFrom([
             '--database' => 'testing',
             '--realpath' => realpath(__DIR__.'/database/migrations'),
         ]);
 
-        $topic = new Topic([
-            'title'     => 'Lorem ipsum dolor sit amet',
-        ]);
-
-        $topic->save();
-
-        /*$this->artisan('db:seed', [
+        $this->artisan('db:seed', [
             '--database'    => 'testing',
             '--class'       => 'TopicTableSeeder',
-        ]);*/
+        ]);
     }
 
     /**
