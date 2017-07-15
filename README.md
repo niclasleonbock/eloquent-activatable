@@ -2,6 +2,7 @@
 
 Creating (de-) activatable Eloquent Models made easy.
 
+[![Build Status](https://travis-ci.org/niclasleonbock/eloquent-activatable.svg?branch=master)](https://travis-ci.org/niclasleonbock/eloquent-activatable)
 
 ## Installation
 First, you'll need to add the package to your `composer.json` and run `composer update`.
@@ -9,12 +10,12 @@ First, you'll need to add the package to your `composer.json` and run `composer 
 ```json
 {
     "require": {
-        "niclasleonbock/eloquent-activatable": "dev-master"
+        "niclasleonbock/eloquent-activatable": "~5.0"
     },
 }
 ```
 
-> Because Eloquent Activatable uses traits and global query scopes you will need to run PHP 5.4.0 and Laravel 4.2.0 or higher.
+> Please require version 4.0 when using with Laravel 4.x.
 
 Now, simply add a datetime column called `activated_at` to your table and use the `ActivatableTrait` (`niclasleonbock\Eloquent\ActivatableTrait`) in your Eloquent model.
 
@@ -95,7 +96,4 @@ public getActivatedAtColumn()
 }
 
 ```
-
-## Todo
-- Add some more tests
 
