@@ -2,7 +2,7 @@
 
 Creating (de-) activatable Eloquent Models made easy.
 
-[![Build Status](https://travis-ci.org/niclasleonbock/eloquent-activatable.svg?branch=master)](https://travis-ci.org/niclasleonbock/eloquent-activatable) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/niclasleonbock/eloquent-activatable/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/niclasleonbock/eloquent-activatable/?branch=develop)
+[![Build Status](https://travis-ci.org/niclasleonbock/eloquent-activatable.svg?branch=master)](https://travis-ci.org/niclasleonbock/eloquent-activatable) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/niclasleonbock/eloquent-activatable/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/niclasleonbock/eloquent-activatable/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/niclasleonbock/eloquent-activatable/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/niclasleonbock/eloquent-activatable/?branch=master)
 
 ## Installation
 First, you'll need to add the package to your `composer.json` and run `composer update`.
@@ -11,7 +11,7 @@ First, you'll need to add the package to your `composer.json` and run `composer 
 {
     "require": {
         "niclasleonbock/eloquent-activatable": "~5.0"
-    },
+    }
 }
 ```
 
