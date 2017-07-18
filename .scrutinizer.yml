@@ -1,0 +1,22 @@
+filter:
+    excluded_paths:
+        - 'tests/*'
+checks:
+    php:
+        code_rating: true
+        duplication: true
+        phpunit_assertions: true
+
+tools:
+    php_code_coverage: true
+    php_code_sniffer:
+        enabled: true
+        config:
+            standard: PSR2
+
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                concatenation: true
+
