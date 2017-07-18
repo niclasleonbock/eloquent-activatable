@@ -5,25 +5,19 @@ class TopicTableSeeder extends Seeder
 {
     public function run()
     {
-        $table = $this->getTable();
-
         $title = 'Lorem ipsum dolor sit amet';
 
-        $topic = new Topic([
-            'title'     => $title,
-        ]);
+        $topics = [
+            [ 'title' => $title ],
+            [ 'title' => $title ],
+            [ 'title' => $title ],
+        ];
 
-        $topic->save();
-    }
+        Topic::insert($topics);
 
-    /**
-     * Get the table for the migrations.
-     *
-     * @return string   Table name
-     */
-    protected function getTable()
-    {
-        return 'topics';
+        $firstTopic = Topic::withDeactivated()->first();
+        $firstTopic->activate();
+        $firstTopic->save();
     }
 }
 

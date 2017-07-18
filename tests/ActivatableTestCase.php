@@ -77,7 +77,7 @@ class ActivatableTestCase extends TestCase
     {
         $count = $this->getModel()->count();
 
-        $this->assertEquals(0, $count);
+        $this->assertEquals(1, $count);
     }
 
     /**
@@ -89,7 +89,7 @@ class ActivatableTestCase extends TestCase
     {
         $count = $this->getModel()->withDeactivated()->count();
 
-        $this->assertEquals(1, $count);
+        $this->assertEquals(3, $count);
     }
 
     /**
@@ -104,6 +104,8 @@ class ActivatableTestCase extends TestCase
         $topic->activate();
 
         $this->assertEquals(Carbon::now()->toDateTimeString(), $topic->activated_at->toDateTimeString());
+        $this->assertEquals(true, $topic->activated());
+        $this->assertEquals(true, $topic->isActivated());
     }
 
     /**
@@ -118,6 +120,8 @@ class ActivatableTestCase extends TestCase
         $topic->deactivate();
 
         $this->assertEquals(null, $topic->activated_at);
+        $this->assertEquals(false, $topic->activated());
+        $this->assertEquals(false, $topic->isActivated());
     }
 
     /**
@@ -130,6 +134,7 @@ class ActivatableTestCase extends TestCase
         $topic = $this->getActivatedTopic();
 
         $this->assertEquals(true, $topic->activated());
+        $this->assertEquals(true, $topic->isActivated());
     }
 
     /**
@@ -142,5 +147,6 @@ class ActivatableTestCase extends TestCase
         $topic = $this->getDeactivatedTopic();
 
         $this->assertEquals(false, $topic->activated());
+        $this->assertEquals(false, $topic->isActivated());
     }
 }
