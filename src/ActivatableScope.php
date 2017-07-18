@@ -34,24 +34,6 @@ class ActivatableScope implements Scope
 
             return $builder;
         });
-
-        $builder->macro('deactivate', function (Builder $builder) {
-            $model = $builder->getModel();
-
-            $builder->withDeactivated();
-
-            return $builder->update([ $model->getActivatedAtColumn() => null ]);
-        });
-
-        $builder->macro('activate', function (Builder $builder) {
-            $model = $this->getModel();
-
-            $query = $model->newQuery()->where($model->getKeyName(), $model->getKey());
-
-            $model->{$model->getActivatedAtColumn()} = $time = $model->freshTimestamp();
-
-            $query->update([ $model->getActivatedAtColumn() => $model->fromDateTime($time) ]);
-        });
     }
 
     /**
