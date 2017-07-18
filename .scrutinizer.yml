@@ -20,3 +20,11 @@ coding_style:
             around_operators:
                 concatenation: true
 
+build:
+    tests:
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover='
+                coverage:
+                    file: 'coverage.clover'
+                    format: 'clover'
