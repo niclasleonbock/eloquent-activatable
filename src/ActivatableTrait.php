@@ -17,30 +17,30 @@ trait ActivatableTrait
         static::addGlobalScope(new ActivatableScope());
     }
 
-    /**
-     * Get a new query builder that includes deactivated data sets.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|static
-     */
-    public static function withDeactivated()
-    {
-        return (new static)->newQueryWithoutScope(new ActivatableScope());
-    }
+//    /**
+//     * Get a new query builder that includes deactivated data sets.
+//     *
+//     * @return \Illuminate\Database\Eloquent\Builder|static
+//     */
+//    public static function withDeactivated()
+//    {
+//        return (new static)->newQueryWithoutScope(new ActivatableScope());
+//    }
 
-    /**
-     * Get a new query builder that only includes deactivated data sets.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|static
-     */
-    public static function onlyDeactivated()
-    {
-        $instance = new static;
+//    /**
+//     * Get a new query builder that only includes deactivated data sets.
+//     *
+//     * @return \Illuminate\Database\Eloquent\Builder|static
+//     */
+//    public static function onlyDeactivated()
+//    {
+//        $instance = new static;
+//
+//        $column = $instance->getQualifiedActivatedAtColumn();
+//
+//        return $instance->newQueryWithoutScope(new ActivatableScope())->whereNotNull($column);
+//    }
 
-        $column = $instance->getQualifiedActivatedAtColumn();
-
-        return $instance->newQueryWithoutScope(new ActivatableScope())->whereNotNull($column);
-    }
-    
     /**
      * Determine if the model instance is activated.
      *
